@@ -8,7 +8,7 @@
 %global scl %{scl_name_prefix}%{scl_name_base}%{scl_name_version}
 %endif
 
-%scl_package %scl
+%{?scl_package:%scl_package %scl}
 
 %global install_scl 1
 
@@ -16,7 +16,7 @@
 %global debug_package %{nil}
 
 Summary: Package that installs %scl
-Name: %scl_name
+Name: %scl
 Version: 1.0
 Release: 1%{?dist}
 License: GPLv2+
@@ -25,7 +25,7 @@ Source2: LICENSE
 BuildRequires: help2man
 BuildRequires: scl-utils-build
 %if 0%{?install_scl}
-Requires: %{scl_prefix}dovecot
+Requires: %{?scl_prefix}dovecot
 %endif
 
 %description
